@@ -138,6 +138,19 @@ public class FaceSearch1NActivity extends AbsBaseActivity {
                         new ImageToast().show(getApplicationContext(), mostSimilarBmp, faceID.replace(".jpg"," ")+score);
                         VoicePlayer.getInstance().play(R.raw.success);
                         binding.graphicOverlay.clearRect();
+                        // 跳转到识别成功页面（通过隐式Intent，避免库依赖应用模块）
+                        try {
+                            String personName = faceID;
+                            int dotIndex = faceID.lastIndexOf('.');
+                            if (dotIndex > 0) {
+                                personName = faceID.substring(0, dotIndex);
+                            }
+                            Intent successIntent = new Intent("com.boywe.facedemo.RECOGNITION_SUCCESS");
+                            successIntent.putExtra("person_name", personName);
+                            startActivity(successIntent);
+                        } catch (Exception e) {
+                            Log.e("FaceSearch1NActivity", "Failed to start success activity", e);
+                        }
                     }
 
                     /**

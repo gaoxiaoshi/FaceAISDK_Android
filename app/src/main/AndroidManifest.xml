@@ -68,6 +68,16 @@
             android:name=".DebugActivity"
             android:exported="false"
             android:parentActivityName=".LogActivity" />
+
+        <activity
+            android:name=".RecognitionSuccessActivity"
+            android:theme="@style/AppTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.boywe.facedemo.RECOGNITION_SUCCESS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         
         <!-- 开机广播接收器 -->
         <receiver
