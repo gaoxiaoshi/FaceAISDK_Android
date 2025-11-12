@@ -18,13 +18,23 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import com.faceAI.demo.FaceAINaviActivity;
+import androidx.core.splashscreen.SplashScreen;
+import android.os.Handler;
+import android.os.Looper;
 
 public class MainActivity extends AppCompatActivity {
 
     private Animation pulseAnimation;
+    // 临时保留系统 SplashScreen 以便观察（vivo 调试用）
+    private volatile boolean holdSplash = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // 安装系统 SplashScreen（Android 12+ 自动生效，低版本由 AndroidX 兼容）
+        SplashScreen splash = SplashScreen.installSplashScreen(this);
+        // 临时延长保留 1.2s，便于在 vivo 上观察系统 Splash 动画
+        splash.setKeepOnScreenCondition(() -> holdSplash);
+        new Handler(Looper.getMainLooper()).postDelayed(() -> holdSplash = false, 1200);
         super.onCreate(savedInstanceState);
         
         // 设置状态栏和导航栏

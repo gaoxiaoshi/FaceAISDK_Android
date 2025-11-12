@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 启动页主题：基于库的 AppTheme，添加系统 SplashScreen 属性 -->
+    <style name="AppTheme.Splash" parent="@style/AppTheme">
+        <!-- 使用欢迎图作为系统 Splash 背景（Android 12+ 与兼容层） -->
+        <item name="windowSplashScreenBackground">@drawable/welcome</item>
+        <!-- 兼容低版：窗口背景同样使用欢迎图，避免出现白底或颜色不一致 -->
+        <item name="android:windowBackground">@drawable/welcome</item>
+        <!-- 隐藏系统中心图标，确保只有全屏欢迎图显示 -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/transparent</item>
+        <!-- 去除图标的圆形底色影响 -->
+        <item name="windowSplashScreenIconBackgroundColor">@android:color/transparent</item>
+
+        <!-- 启动页结束后应用的主题 -->
+        <item name="postSplashScreenTheme">@style/AppTheme</item>
+    </style>
+
+</resources>

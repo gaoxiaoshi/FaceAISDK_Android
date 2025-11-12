@@ -36,15 +36,15 @@ public class BootReceiver extends BroadcastReceiver {
             Log.d(TAG, "Boot/Replace event detected, attempting to start MainActivity");
             
             try {
-                // 启动欢迎页面Activity，保持正常的应用启动流程
-                Intent welcomeIntent = new Intent(context, WelcomeActivity.class);
-                welcomeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                welcomeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                welcomeIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                context.startActivity(welcomeIntent);
-                Log.d(TAG, "WelcomeActivity started successfully");
+                // 启动主页面 Activity（入口改为系统 SplashScreen + MainActivity）
+                Intent mainIntent = new Intent(context, MainActivity.class);
+                mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                mainIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                context.startActivity(mainIntent);
+                Log.d(TAG, "MainActivity started successfully");
             } catch (Exception e) {
-                Log.e(TAG, "Failed to start WelcomeActivity", e);
+                Log.e(TAG, "Failed to start MainActivity", e);
                 logBroadcastReceived(context, "启动失败: " + e.getMessage());
             }
         } else {

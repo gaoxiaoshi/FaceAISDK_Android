@@ -5,6 +5,8 @@ import androidx.annotation.NonNull;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.CameraXConfig;
 import androidx.camera.camera2.Camera2Config;
+import com.faceAI.demo.FaceSDKConfig;
+import com.tencent.bugly.crashreport.CrashReport;
 
 
 public class FaceApplication extends Application implements CameraXConfig.Provider {
@@ -30,6 +32,22 @@ public class FaceApplication extends Application implements CameraXConfig.Provid
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // 人脸图保存路径等初始化配置迁移到 Application
+        try {
+            FaceSDKConfig.init(this);
+        } catch (Throwable t) {
+            Log.e("FaceApplication", "FaceSDKConfig.init error", t);
+        }
+
+        // 收集 Crash、ANR 运行日志（仅非调试包）
+        try {
+            if (!BuildConfig.DEBUG) {
+                CrashReport.initCrashReport(this, "36fade54d8", true);
+            }
+        } catch (Throwable t) {
+            Log.e("FaceApplication", "CrashReport init error", t);
+        }
     }
 
 
