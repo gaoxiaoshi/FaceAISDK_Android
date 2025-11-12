@@ -147,6 +147,7 @@ public class FaceSearch1NActivity extends AbsBaseActivity {
                             }
                             Intent successIntent = new Intent("com.boywe.facedemo.RECOGNITION_SUCCESS");
                             successIntent.putExtra("person_name", personName);
+                            successIntent.putExtra("avatar_path", CACHE_SEARCH_FACE_DIR + faceID);
                             startActivity(successIntent);
                         } catch (Exception e) {
                             Log.e("FaceSearch1NActivity", "Failed to start success activity", e);
