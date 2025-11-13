@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="请保持正脸在取景框中更具屏幕指示完成识别"
+            android:text="请保持正脸在取景框中，并根据屏幕指示完成识别"
             android:textColor="@color/text_hint"
             android:textSize="12sp"
             android:layout_marginTop="6dp" />
@@ -135,7 +135,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2. 请本人亲自完成，请将脸部置于提示框内，并按操作；"
+                    android:text="2. 请将正脸置于取景框中，匹配人脸；"
                     android:textColor="@color/text_secondary"
                     android:textSize="13sp" />
 
